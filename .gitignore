@@ -1,6 +1,7 @@
 .idea/
 *.iml
 target/
+assets/rs
 .settings/
 .project
 .classpath
