@@ -36,10 +36,11 @@ public class Reader implements Runnable {
 
     private LineBean parseLine(String line) {
         String[] split = line.split(",");
-        return new LineBean()
-                .setId(split[0])
-                .setGroupId(split[1])
-                .setQuota(Float.parseFloat(split[2]));
+        LineBean bean = new LineBean();
+        bean.setId(split[0]);
+        bean.setGroupId(split[1]);
+        bean.setQuota(Float.parseFloat(split[2]));
+        return bean;
     }
 
 }

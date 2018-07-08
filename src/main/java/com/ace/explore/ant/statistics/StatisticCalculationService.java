@@ -12,7 +12,9 @@ public class StatisticCalculationService {
 
     public StatisticsBean getStatisticsBean(File file) {
         try (FileInputStream inputStream = new FileInputStream(file)) {
-            return getStatisticsBean(inputStream).setFile(file.getPath());
+            StatisticsBean bean = getStatisticsBean(inputStream);
+            bean.setFile(file.getPath());
+            return bean;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -57,6 +59,11 @@ public class StatisticCalculationService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return new StatisticsBean().setTotal(total).setBlank(blank).setComment(comment).setCode(code);
+        StatisticsBean bean = new StatisticsBean();
+        bean.setTotal(total);
+        bean.setBlank(blank);
+        bean.setComment(comment);
+        bean.setCode(code);
+        return bean;
     }
 }

@@ -34,8 +34,9 @@ public class QuotaCalculation extends Observable implements Runnable {
         }
         if (modCount >= notifyPeriod) {
             Collections.sort(groupdIds);
-            AggBean aggBean = new AggBean().setGroupIds(Collections.unmodifiableList(groupdIds))
-                    .setQuotaMap(Collections.unmodifiableMap(map));
+            AggBean aggBean = new AggBean();
+            aggBean.setGroupIds(Collections.unmodifiableList(groupdIds));
+            aggBean.setQuotaMap(Collections.unmodifiableMap(map));
             setChanged();
             notifyObservers(aggBean);
             modCount = 0;
@@ -58,8 +59,10 @@ public class QuotaCalculation extends Observable implements Runnable {
     public AggBean getResult() {
         //TODO wait for done
         Collections.sort(groupdIds);
-        return new AggBean().setGroupIds(Collections.unmodifiableList(groupdIds))
-                .setQuotaMap(Collections.unmodifiableMap(map));
+        AggBean bean = new AggBean();
+        bean.setGroupIds(Collections.unmodifiableList(groupdIds));
+        bean.setQuotaMap(Collections.unmodifiableMap(map));
+        return bean;
     }
 
 }
